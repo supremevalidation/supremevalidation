@@ -237,8 +237,9 @@
         }
 
         &.error {
-            input {
+            input:not([type="radio"]):not([type="checkbox"]) {
                 border-color: $redorange;
+                color: $redorange;
 
                 &:focus {
                     border-color: $redorange;

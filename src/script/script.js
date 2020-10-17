@@ -12,9 +12,20 @@ import 'bootstrap';
         const form = $(this);
         const button = form.find('button[type=submit]');
 
+        const inputCollection = form.find('.supreme-validate-element input:not([type=radio]):not([type=checkbox])');
+        const selectCollection = form.find('.select-container select');
+        const checkboxCollection = form.find('.checkbox-list input');
+        const radioCollection = form.find('.radio-list input');
+        const textareaCollection = form.find('.supreme-validate-element textarea');
+
         button.on('click', function (e) {
             e.preventDefault()
-            getAllFormElements(form)
+            
+            console.log(inputCollection)
+            console.log(selectCollection)
+            console.log(checkboxCollection)
+            console.log(radioCollection)
+            console.log(textareaCollection)
         });
 
         form.on('submit', function (e) {
