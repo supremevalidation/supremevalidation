@@ -4,7 +4,7 @@ import 'bootstrap';
 (function ($) {
     "use strict";
 
-    function getAllFormElements(form) {
+    function validateInput(collection) {
         
     }
 
