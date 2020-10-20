@@ -4,12 +4,20 @@ import 'bootstrap';
 (function ($) {
     "use strict";
 
+    const ELEMENT_TYPES = {
+        INPUT: 'input',
+        SELECT: 'select',
+        CHECK: 'check',
+        RADIO: 'radio',
+        TEXTAREA: 'textarea'
+    }
+
     const getAllFormElements = form => ({
-        input: form.find('.supreme-validate-element input:not([type=radio]):not([type=checkbox])'),
-        select: form.find('.select-container select'),
-        check: form.find('.checkbox-list input'),
-        radio: form.find('.radio-list input'),
-        textarea: form.find('.supreme-validate-element textarea')
+        [ELEMENT_TYPES.INPUT]: form.find('.supreme-validate-element input:not([type=radio]):not([type=checkbox])'),
+        [ELEMENT_TYPES.SELECT]: form.find('.select-container select'),
+        [ELEMENT_TYPES.CHECK]: form.find('.checkbox-list input'),
+        [ELEMENT_TYPES.RADIO]: form.find('.radio-list input'),
+        [ELEMENT_TYPES.TEXTAREA]: form.find('.supreme-validate-element textarea')
     })
 
     $.fn.supremeValidation = function () {
