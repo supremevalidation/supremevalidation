@@ -20,6 +20,12 @@ import 'bootstrap';
         [ELEMENT_TYPES.TEXTAREA]: form.find('.supreme-validate-element textarea')
     })
 
+    const isValidForm = formCollection => {
+        const types = Object.keys(formCollection);
+
+        console.log('types: ', types)
+    }
+
     $.fn.supremeValidation = function () {
         const form = $(this);
         const button = form.find('button[type=submit]');
@@ -27,9 +33,9 @@ import 'bootstrap';
         button.on('click', function (e) {
             e.preventDefault()
 
-            console.log(
-                getAllFormElements(form)
-            )
+            const formCollection = getAllFormElements(form);
+
+            console.log(isValidForm(formCollection))
         });
 
         form.on('submit', function (e) {
