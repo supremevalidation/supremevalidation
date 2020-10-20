@@ -4,28 +4,24 @@ import 'bootstrap';
 (function ($) {
     "use strict";
 
-    function validateInput(collection) {
-        
-    }
+    const getAllFormElements = form => ({
+        input: form.find('.supreme-validate-element input:not([type=radio]):not([type=checkbox])'),
+        select: form.find('.select-container select'),
+        check: form.find('.checkbox-list input'),
+        radio: form.find('.radio-list input'),
+        textarea: form.find('.supreme-validate-element textarea')
+    })
 
     $.fn.supremeValidation = function () {
         const form = $(this);
         const button = form.find('button[type=submit]');
 
-        const inputCollection = form.find('.supreme-validate-element input:not([type=radio]):not([type=checkbox])');
-        const selectCollection = form.find('.select-container select');
-        const checkboxCollection = form.find('.checkbox-list input');
-        const radioCollection = form.find('.radio-list input');
-        const textareaCollection = form.find('.supreme-validate-element textarea');
-
         button.on('click', function (e) {
             e.preventDefault()
-            
-            console.log(inputCollection)
-            console.log(selectCollection)
-            console.log(checkboxCollection)
-            console.log(radioCollection)
-            console.log(textareaCollection)
+
+            console.log(
+                getAllFormElements(form)
+            )
         });
 
         form.on('submit', function (e) {
