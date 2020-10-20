@@ -5,23 +5,38 @@ import 'bootstrap';
     "use strict";
 
     const inputValidate = collection => {
-
+        return {
+            valid: false,
+            elements: collection[0]
+        }
     }
 
     const selectValidate = collection => {
-
+        return {
+            valid: false,
+            elements: collection[0]
+        }
     }
 
     const checkValidate = collection => {
-
+        return {
+            valid: false,
+            elements: collection[0]
+        }
     }
 
     const radioValidate = collection => {
-
+        return {
+            valid: false,
+            elements: collection[0]
+        }
     }
 
     const textareaValidate = collection => {
-
+        return {
+            valid: false,
+            elements: collection[0]
+        }
     }
 
     const ELEMENT_TYPES = {
@@ -51,7 +66,9 @@ import 'bootstrap';
     const isValidForm = formCollection => {
         const types = Object.keys(formCollection);
 
+        types.forEach(typeItem => {
 
+        })
     }
 
     $.fn.supremeValidation = function () {
