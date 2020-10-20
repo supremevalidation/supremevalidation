@@ -4,12 +4,40 @@ import 'bootstrap';
 (function ($) {
     "use strict";
 
+    const inputValidate = collection => {
+
+    }
+
+    const selectValidate = collection => {
+
+    }
+
+    const checkValidate = collection => {
+
+    }
+
+    const radioValidate = collection => {
+
+    }
+
+    const textareaValidate = collection => {
+
+    }
+
     const ELEMENT_TYPES = {
         INPUT: 'input',
         SELECT: 'select',
         CHECK: 'check',
         RADIO: 'radio',
         TEXTAREA: 'textarea'
+    }
+
+    const ELEMENT_VALIDATE_FUNCTION = {
+        [ELEMENT_TYPES.INPUT]: inputValidate,
+        [ELEMENT_TYPES.SELECT]: selectValidate,
+        [ELEMENT_TYPES.CHECK]: checkValidate,
+        [ELEMENT_TYPES.RADIO]: radioValidate,
+        [ELEMENT_TYPES.TEXTAREA]: textareaValidate
     }
 
     const getAllFormElements = form => ({
@@ -23,7 +51,7 @@ import 'bootstrap';
     const isValidForm = formCollection => {
         const types = Object.keys(formCollection);
 
-        console.log('types: ', types)
+
     }
 
     $.fn.supremeValidation = function () {
