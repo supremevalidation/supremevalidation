@@ -1,43 +1,10 @@
 import 'jquery';
 import 'bootstrap';
 
+import { ElementValidation } from './element-validation'
+
 (function ($) {
     "use strict";
-
-    const inputValidate = collection => {
-        return {
-            valid: false,
-            elements: collection[0]
-        }
-    }
-
-    const selectValidate = collection => {
-        return {
-            valid: false,
-            elements: collection[0]
-        }
-    }
-
-    const checkValidate = collection => {
-        return {
-            valid: false,
-            elements: collection[0]
-        }
-    }
-
-    const radioValidate = collection => {
-        return {
-            valid: false,
-            elements: collection[0]
-        }
-    }
-
-    const textareaValidate = collection => {
-        return {
-            valid: false,
-            elements: collection[0]
-        }
-    }
 
     const ELEMENT_TYPES = {
         INPUT: 'input',
@@ -47,28 +14,31 @@ import 'bootstrap';
         TEXTAREA: 'textarea'
     }
 
-    const ELEMENT_VALIDATE_FUNCTION = {
-        [ELEMENT_TYPES.INPUT]: inputValidate,
-        [ELEMENT_TYPES.SELECT]: selectValidate,
-        [ELEMENT_TYPES.CHECK]: checkValidate,
-        [ELEMENT_TYPES.RADIO]: radioValidate,
-        [ELEMENT_TYPES.TEXTAREA]: textareaValidate
-    }
-
     const getAllFormElements = form => ({
-        [ELEMENT_TYPES.INPUT]: form.find('.supreme-validate-element input:not([type=radio]):not([type=checkbox])'),
-        [ELEMENT_TYPES.SELECT]: form.find('.select-container select'),
-        [ELEMENT_TYPES.CHECK]: form.find('.checkbox-list input'),
-        [ELEMENT_TYPES.RADIO]: form.find('.radio-list input'),
-        [ELEMENT_TYPES.TEXTAREA]: form.find('.supreme-validate-element textarea')
+        [ELEMENT_TYPES.INPUT]: form.find('.supreme-validate-element input:not([type=radio]):not([type=checkbox])').toArray(),
+        [ELEMENT_TYPES.SELECT]: form.find('.select-container select').toArray(),
+        [ELEMENT_TYPES.CHECK]: form.find('.checkbox-list input').toArray(),
+        [ELEMENT_TYPES.RADIO]: form.find('.radio-list input').toArray(),
+        [ELEMENT_TYPES.TEXTAREA]: form.find('.supreme-validate-element textarea').toArray()
     })
 
     const isValidForm = formCollection => {
         const types = Object.keys(formCollection);
 
-        types.forEach(typeItem => {
+        console.log('formCollection: ', formCollection)
 
+        types.forEach(typeItem => {
+            const validateElement = ElementValidation[typeItem](formCollection[typeItem])
+            setErrorElement(validateElement)
         })
+    }
+
+    const setErrorElement = formCollection => {
+        if (!formCollection.valid) {
+            formCollection.elements.forEach(item => {
+                $(item).closest('.supreme-validate-element').addClass('error')
+            })
+        }
     }
 
     $.fn.supremeValidation = function () {

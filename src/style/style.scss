@@ -175,7 +175,7 @@
     }
 
     textarea {
-        margin-bottom: 15px;
+        display: block;
         width: 100%;
         height: 130px;
         padding: 15px 20px;
@@ -241,8 +241,42 @@
                 border-color: $redorange;
                 color: $redorange;
 
+                &::placeholder {
+                    color: $monalisa;
+                }
+
                 &:focus {
                     border-color: $redorange;
+                }
+            }
+
+            .select-container {
+                &::after {
+                    border-left-color: $redorange;
+                    color: $white;
+                    background-color: $redorange;
+                }
+
+                select {
+                    border-color: $redorange;
+                    color: $redorange;
+                }
+            }
+
+            .checkbox-list li label, .radio-list li label {
+                color: $redorange;
+
+                &::before {
+                    border-color: $redorange;
+                }
+            }
+
+            textarea {
+                border-color: $redorange;
+                color: $redorange;
+
+                &::placeholder {
+                    color: $monalisa;
                 }
             }
 
