@@ -6,54 +6,79 @@ import { ElementValidation } from './element-validation'
 (function ($) {
     "use strict";
 
+    const LISTENERS = {
+        CLICK: 'click',
+        SUBMIT: 'submit',
+        KEY_UP: 'keyup',
+        CHANGE: 'change'
+    }
+
     const ELEMENT_TYPES = {
         INPUT: 'input',
         SELECT: 'select',
         CHECK: 'check',
         RADIO: 'radio',
-        TEXTAREA: 'textarea'
+        TEXTAREA: 'textarea',
+        VALIDATE_ELEMENT_CLASS: '.supreme-validate-element'
     }
 
     const getAllFormElements = form => ({
-        [ELEMENT_TYPES.INPUT]: form.find('.supreme-validate-element input:not([type=radio]):not([type=checkbox])').toArray(),
+        [ELEMENT_TYPES.INPUT]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} input:not([type=radio]):not([type=checkbox])`).toArray(),
         [ELEMENT_TYPES.SELECT]: form.find('.select-container select').toArray(),
         [ELEMENT_TYPES.CHECK]: form.find('.checkbox-list input').toArray(),
         [ELEMENT_TYPES.RADIO]: form.find('.radio-list input').toArray(),
-        [ELEMENT_TYPES.TEXTAREA]: form.find('.supreme-validate-element textarea').toArray()
+        [ELEMENT_TYPES.TEXTAREA]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} textarea`).toArray()
     })
-
-    const isValidForm = formCollection => {
-        const types = Object.keys(formCollection);
-
-        console.log('formCollection: ', formCollection)
-
-        types.forEach(typeItem => {
-            const validateElement = ElementValidation[typeItem](formCollection[typeItem])
-            setErrorElement(validateElement)
-        })
-    }
 
     const setErrorElement = formCollection => {
         if (!formCollection.valid) {
             formCollection.elements.forEach(item => {
-                $(item).closest('.supreme-validate-element').addClass('error')
+                $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).addClass('error')
             })
         }
+    }
+
+    const isValidForm = formCollection => {
+        const types = Object.keys(formCollection);
+        $(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass('error')
+
+        const elements = types.map(typeItem => {
+            const validateElement = ElementValidation[typeItem](formCollection[typeItem])
+            setErrorElement(validateElement)
+
+            return validateElement
+        })
+
+        const isValid = elements.filter(item => !item.valid && item).length === 0
+
+        return isValid
     }
 
     $.fn.supremeValidation = function () {
         const form = $(this);
         const button = form.find('button[type=submit]');
+        const input = form.find('input:not([type=radio]):not([type=checkbox])')
+        const checkbox = form.find('.checkbox-list input')
+        const radio = form.find('.checkbox-list input')
 
-        button.on('click', function (e) {
+        button.on(LISTENERS.CLICK, function (e) {
             e.preventDefault()
 
             const formCollection = getAllFormElements(form);
+            const isValid = isValidForm(formCollection);
 
-            console.log(isValidForm(formCollection))
+            console.log(isValid)
         });
 
-        form.on('submit', function (e) {
+        input.on(LISTENERS.KEY_UP, function () {
+            console.log('key up!')
+        });
+
+        checkbox.on(LISTENERS.CHANGE, function () {
+            console.log('change!')
+        });
+
+        form.on(LISTENERS.SUBMIT, function (e) {
             e.preventDefault()
         });
     }
