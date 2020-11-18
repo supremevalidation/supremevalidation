@@ -1,10 +1,24 @@
 export default function checkValidate(collection) {
-    const minCheck = $(collection).closest('.supreme-validate-element').attr('min-check')
-    const checkedElements = collection.filter(item => $(item).prop('checked') && item)
-    const unCheckedElements = collection.filter(item => !$(item).prop('checked') && item)
+
+    const unCheckedElements = []
+    const checkedElements = []
+
+    collection.forEach(item => {
+        const minCheck = $(item).closest('.supreme-validate-element').attr('min-check')
+        const subCollection = $(item).find('input').toArray();
+        const selectedSubCollection = subCollection.filter(item => item.checked && item)
+        const isValid = selectedSubCollection.length >= minCheck
+
+        if (!isValid) {
+            unCheckedElements.push(item)
+        } else {
+            checkedElements.push(item)
+        }
+    })
 
     return {
-        valid: checkedElements.length >= minCheck,
-        elements: unCheckedElements
+        valid: unCheckedElements.length === 0,
+        errorElements: unCheckedElements,
+        successElements: checkedElements
     }
 }

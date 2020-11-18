@@ -25,26 +25,31 @@ import { ElementValidation } from './element-validation'
     const getAllFormElements = form => ({
         [ELEMENT_TYPES.INPUT]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} input:not([type=radio]):not([type=checkbox])`).toArray(),
         [ELEMENT_TYPES.SELECT]: form.find('.select-container select').toArray(),
-        [ELEMENT_TYPES.CHECK]: form.find('.checkbox-list input').toArray(),
+        [ELEMENT_TYPES.CHECK]: form.find('.checkbox-list').toArray(),
         [ELEMENT_TYPES.RADIO]: form.find('.radio-list input').toArray(),
         [ELEMENT_TYPES.TEXTAREA]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} textarea`).toArray()
     })
 
     const setErrorElement = formCollection => {
-        if (!formCollection.valid) {
-            formCollection.elements.forEach(item => {
-                $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).addClass('error')
-            })
-        }
+        formCollection.forEach(item => {
+            $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass('success').addClass('error')
+        })
+    }
+
+    const setSuccessElement = formCollection => {
+        formCollection.forEach(item => {
+            $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass('error').addClass('success')
+        })
     }
 
     const isValidForm = formCollection => {
-        const types = Object.keys(formCollection);
-        $(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass('error')
+        const types = Object.keys(formCollection).filter(item => formCollection[item].length > 0 && item);
 
         const elements = types.map(typeItem => {
             const validateElement = ElementValidation[typeItem](formCollection[typeItem])
-            setErrorElement(validateElement)
+
+            setErrorElement(validateElement.errorElements)
+            setSuccessElement(validateElement.successElements)
 
             return validateElement
         })

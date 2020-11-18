@@ -4,7 +4,8 @@ export default function textareaValidate(collection) {
     const elements = CommonValidation.standart(collection)
 
     return {
-        valid: elements.length === 0,
-        elements: elements
+        valid: elements.errorElements.length === 0,
+        errorElements: elements.errorElements,
+        successElements: elements.successElements
     }
 }

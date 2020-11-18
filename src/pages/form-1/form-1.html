@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="supreme-validate-element success" error-message="Lütfen isim alanını doldurunuz.">
+                            <div class="supreme-validate-element" error-message="Lütfen isim alanını doldurunuz.">
                                 <label>Surname:</label>
                                 <input type="text" placeholder="Surname" name="surname" />
                             </div>
@@ -65,6 +65,29 @@
                             </div>
                         </div>
                         <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen en az 3 tane seçiniz." min-check="3">
+                                <label>Lütfen bidiğiniz yazılım dillerini seçiniz.</label>
+                                <ul class="checkbox-list">
+                                    <li>
+                                        <input type="checkbox" id="html" name="html" value="html" />
+                                        <label for="html">Html</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="css" name="css" value="css" />
+                                        <label for="css">CSS</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="js" name="js" value="js" />
+                                        <label for="js">JS</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="react" name="react" value="react" />
+                                        <label for="react">React</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="supreme-validate-element" error-message="Lütfen ülke seçiniz.">
                                 <label>Ülke</label>
                                 <ul class="radio-list">
@@ -79,6 +102,25 @@
                                     <li>
                                         <input type="radio" id="konya" name="city" value="konya" />
                                         <label for="konya">Konya</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen ülke seçiniz.">
+                                <label>Meslek</label>
+                                <ul class="radio-list">
+                                    <li>
+                                        <input type="radio" id="frontend" name="job" value="frontend" />
+                                        <label for="frontend">Front-End</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="pilot" name="job" value="pilot" />
+                                        <label for="pilot">Pilot</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="backend" name="job" value="backend" />
+                                        <label for="backend">Back-End</label>
                                     </li>
                                 </ul>
                             </div>

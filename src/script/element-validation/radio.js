@@ -4,6 +4,7 @@ export default function radioValidate(collection) {
 
     return {
         valid: checkedElements.length > 0,
-        elements: unCheckedElements
+        errorElements: unCheckedElements,
+        successElements: checkedElements
     }
 }
