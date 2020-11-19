@@ -60,34 +60,14 @@ import { ElementValidation } from './element-validation'
     }
 
     const elementChangeControl = e => {
+        const element = e.target;
+        const attribute = element.getAttribute('type');
+        const hasCheckOrRadio = attribute === 'checkbox' || attribute === 'radio';
+        const type = hasCheckOrRadio ? attribute : element.nodeName.toLowerCase();
+        const validateElement = ElementValidation[type]([element]);
 
-        // const element = e.target;
-        // const attribute = element.getAttribute('type');
-        // const hasCheckOrRadio = 
-        // const type = element.nodeName;
-
-        // console.log(attribute ? attribute : type)
-
-        // const validateElement = ElementValidation[attribute ? attribute : type.toLowerCase()]([element]);
-
-        // setErrorElement(validateElement.errorElements)
-        // setSuccessElement(validateElement.successElements)
-
-        // console.log('validateElement: ', validateElement)
-
-        // const element = e.target;
-        // const elementAttrType = e.target.getAttribute('type');
-        // const hasCheckOrRadio = elementAttrType === 'checkbox' || elementAttrType === 'radio';
-        // const elementType = hasCheckOrRadio ? elementAttrType.toUpperCase() : e.target.nodeName;
-
-        // console.log('hasCheckOrRadio: ', hasCheckOrRadio)
-        // console.log('elementType: ', elementType)
-        // const validateElement = ElementValidation[elementType]([element]);
-
-        // setErrorElement(validateElement.errorElements)
-        // setSuccessElement(validateElement.successElements)
-
-        // console.log('validateElement: ', validateElement)
+        setErrorElement(validateElement.errorElements)
+        setSuccessElement(validateElement.successElements)
     }
 
     const setChangeListenerElements = formCollection => {
