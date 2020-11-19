@@ -16,7 +16,7 @@ import { ElementValidation } from './element-validation'
     const ELEMENT_TYPES = {
         INPUT: 'input',
         SELECT: 'select',
-        CHECK: 'check',
+        CHECKBOX: 'check',
         RADIO: 'radio',
         TEXTAREA: 'textarea',
         VALIDATE_ELEMENT_CLASS: '.supreme-validate-element'
@@ -25,7 +25,7 @@ import { ElementValidation } from './element-validation'
     const getAllFormElements = form => ({
         [ELEMENT_TYPES.INPUT]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} input:not([type=radio]):not([type=checkbox])`).toArray(),
         [ELEMENT_TYPES.SELECT]: form.find('.select-container select').toArray(),
-        [ELEMENT_TYPES.CHECK]: form.find('.checkbox-list').toArray(),
+        [ELEMENT_TYPES.CHECKBOX]: form.find('.checkbox-list').toArray(),
         [ELEMENT_TYPES.RADIO]: form.find('.radio-list input').toArray(),
         [ELEMENT_TYPES.TEXTAREA]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} textarea`).toArray()
     })
@@ -59,12 +59,33 @@ import { ElementValidation } from './element-validation'
         return isValid
     }
 
+    const elementChangeControl = e => {
+
+        console.log(
+            $(e.target).closest('.supreme-validate-element')
+        )
+
+        // const element = e.target;
+        // const elementAttrType = e.target.getAttribute('type');
+        // const hasCheckOrRadio = elementAttrType === 'checkbox' || elementAttrType === 'radio';
+        // const elementType = hasCheckOrRadio ? elementAttrType.toUpperCase() : e.target.nodeName;
+
+        // console.log('hasCheckOrRadio: ', hasCheckOrRadio)
+        // console.log('elementType: ', elementType)
+        // const validateElement = ElementValidation[elementType]([element]);
+
+        // setErrorElement(validateElement.errorElements)
+        // setSuccessElement(validateElement.successElements)
+
+        // console.log('validateElement: ', validateElement)
+    }
+
     $.fn.supremeValidation = function () {
         const form = $(this);
         const button = form.find('button[type=submit]');
         const input = form.find('input:not([type=radio]):not([type=checkbox])')
-        const checkbox = form.find('.checkbox-list input')
-        const radio = form.find('.checkbox-list input')
+        const checkbox = form.find('.checkbox-list input[type=checkbox]')
+        const radio = form.find('.radio-list input[type=radio]')
 
         button.on(LISTENERS.CLICK, function (e) {
             e.preventDefault()
@@ -75,13 +96,11 @@ import { ElementValidation } from './element-validation'
             console.log(isValid)
         });
 
-        input.on(LISTENERS.KEY_UP, function () {
-            console.log('key up!')
-        });
+        input.on(LISTENERS.KEY_UP, elementChangeControl);
 
-        checkbox.on(LISTENERS.CHANGE, function () {
-            console.log('change!')
-        });
+        checkbox.on(LISTENERS.CHANGE, elementChangeControl);
+
+        radio.on(LISTENERS.CHANGE, elementChangeControl);
 
         form.on(LISTENERS.SUBMIT, function (e) {
             e.preventDefault()
