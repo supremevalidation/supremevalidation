@@ -5,7 +5,7 @@ import select from './select'
 import textarea from './textarea'
 
 export const ElementValidation = {
-    check: check,
+    checkbox: check,
     input: input,
     radio: radio,
     select: select,

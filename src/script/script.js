@@ -16,7 +16,7 @@ import { ElementValidation } from './element-validation'
     const ELEMENT_TYPES = {
         INPUT: 'input',
         SELECT: 'select',
-        CHECKBOX: 'check',
+        CHECKBOX: 'checkbox',
         RADIO: 'radio',
         TEXTAREA: 'textarea',
         VALIDATE_ELEMENT_CLASS: '.supreme-validate-element'
@@ -25,7 +25,7 @@ import { ElementValidation } from './element-validation'
     const getAllFormElements = form => ({
         [ELEMENT_TYPES.INPUT]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} input:not([type=radio]):not([type=checkbox])`).toArray(),
         [ELEMENT_TYPES.SELECT]: form.find('.select-container select').toArray(),
-        [ELEMENT_TYPES.CHECKBOX]: form.find('.checkbox-list').toArray(),
+        [ELEMENT_TYPES.CHECKBOX]: form.find('.checkbox-list input').toArray(),
         [ELEMENT_TYPES.RADIO]: form.find('.radio-list input').toArray(),
         [ELEMENT_TYPES.TEXTAREA]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} textarea`).toArray()
     })
@@ -61,9 +61,19 @@ import { ElementValidation } from './element-validation'
 
     const elementChangeControl = e => {
 
-        console.log(
-            $(e.target).closest('.supreme-validate-element')
-        )
+        // const element = e.target;
+        // const attribute = element.getAttribute('type');
+        // const hasCheckOrRadio = 
+        // const type = element.nodeName;
+
+        // console.log(attribute ? attribute : type)
+
+        // const validateElement = ElementValidation[attribute ? attribute : type.toLowerCase()]([element]);
+
+        // setErrorElement(validateElement.errorElements)
+        // setSuccessElement(validateElement.successElements)
+
+        // console.log('validateElement: ', validateElement)
 
         // const element = e.target;
         // const elementAttrType = e.target.getAttribute('type');
@@ -80,31 +90,41 @@ import { ElementValidation } from './element-validation'
         // console.log('validateElement: ', validateElement)
     }
 
+    const setChangeListenerElements = formCollection => {
+        const types = Object.keys(formCollection).filter(item => formCollection[item].length > 0 && item);
+
+        types.forEach(typeItem => {
+            const collection = formCollection[typeItem];
+
+            collection.forEach(collectionItem => {
+                const attribute = collectionItem.getAttribute('type');
+                const type = collectionItem.nodeName;
+                const hasChangeListener = type === 'SELECT' || attribute === 'checkbox' || attribute === 'radio';
+                const listener = hasChangeListener ? LISTENERS.CHANGE : LISTENERS.KEY_UP;
+
+                $(collectionItem).on(listener, elementChangeControl)
+            })
+        })
+    }
+
     $.fn.supremeValidation = function () {
         const form = $(this);
         const button = form.find('button[type=submit]');
-        const input = form.find('input:not([type=radio]):not([type=checkbox])')
-        const checkbox = form.find('.checkbox-list input[type=checkbox]')
-        const radio = form.find('.radio-list input[type=radio]')
+        const formCollection = getAllFormElements(form);
 
         button.on(LISTENERS.CLICK, function (e) {
             e.preventDefault()
-
-            const formCollection = getAllFormElements(form);
             const isValid = isValidForm(formCollection);
-
             console.log(isValid)
         });
 
-        input.on(LISTENERS.KEY_UP, elementChangeControl);
-
-        checkbox.on(LISTENERS.CHANGE, elementChangeControl);
-
-        radio.on(LISTENERS.CHANGE, elementChangeControl);
-
         form.on(LISTENERS.SUBMIT, function (e) {
             e.preventDefault()
+            const isValid = isValidForm(formCollection);
+            console.log(isValid)
         });
+
+        setChangeListenerElements(formCollection)
     }
 
     $('#contact-form').supremeValidation()
