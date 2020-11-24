@@ -1,8 +1,12 @@
 {
-    "name": "yasgokit",
+    "name": "supreme-validation",
+    "title": "Supreme Validation",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "description": "jQuery form validation library.",
+    "main": "dist/assets/js/script.min.js",
+    "files": [
+		"dist/assets/js/script.min.js"
+	],
     "scripts": {
         "build": "webpack --config prod.config.js",
         "dev": "webpack --mode development",
@@ -12,6 +16,10 @@
     "keywords": [],
     "author": "Yasin Burak Kalkan",
     "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/yasgo/supreme-validation/issues"
+    },
+    "homepage": "https://github.com/yasgo/supreme-validation#readme",
     "devDependencies": {
         "@babel/core": "^7.12.7",
         "@babel/preset-env": "^7.12.7",
