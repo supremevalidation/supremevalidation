@@ -1,11 +1,6 @@
-import 'jquery';
-import 'bootstrap';
-
 import { ElementValidation } from './element-validation'
 
 (function ($) {
-    "use strict";
-
     const LISTENERS = {
         CLICK: 'click',
         SUBMIT: 'submit',
@@ -106,7 +101,5 @@ import { ElementValidation } from './element-validation'
 
         setChangeListenerElements(formCollection)
     }
-
-    $('#contact-form').supremeValidation()
 
 })(jQuery);
