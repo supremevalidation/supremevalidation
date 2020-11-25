@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form 1</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/css/supreme.validation.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <form id="contact-form" action="temp/form.json" method="get" autocomplete="off" class="supreme-validate">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen isim alanını doldurunuz.">
+                                <label>Name:</label>
+                                <input type="text" placeholder="Name" name="name" />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen isim alanını doldurunuz.">
+                                <label>Surname:</label>
+                                <input type="text" placeholder="Surname" name="surname" />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen mail adresinizi yazınız."
+                                custom-validation="mail">
+                                <label>Mail:</label>
+                                <input type="text" placeholder="Mail" name="mail" />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen isim alanını doldurunuz.">
+                                <label>Surname:</label>
+                                <div class="select-container">
+                                    <select name="cars" id="cars">
+                                        <option value="" selected disabled>Placeholder</option>
+                                        <option value="volvo">Volvo</option>
+                                        <option value="saab">Saab</option>
+                                        <option value="mercedes">Mercedes</option>
+                                        <option value="audi">Audi</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen en az 2 tane seçiniz."
+                                min-check="2">
+                                <label>Lütfen hobilerinizi seçiniz.</label>
+                                <ul class="checkbox-list">
+                                    <li>
+                                        <input type="checkbox" id="bike" name="bike" value="bike" />
+                                        <label for="bike">🚲 Bike</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="cinema" name="cinema" value="cinema" />
+                                        <label for="cinema">🎞 Cinema</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="swim" name="swim" value="swim" />
+                                        <label for="swim">🏊 Swim</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen en az 3 tane seçiniz."
+                                min-check="3">
+                                <label>Lütfen bidiğiniz yazılım dillerini seçiniz.</label>
+                                <ul class="checkbox-list">
+                                    <li>
+                                        <input type="checkbox" id="html" name="html" value="html" />
+                                        <label for="html">Html</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="css" name="css" value="css" />
+                                        <label for="css">CSS</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="js" name="js" value="js" />
+                                        <label for="js">JS</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="react" name="react" value="react" />
+                                        <label for="react">React</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen ülke seçiniz.">
+                                <label>Ülke</label>
+                                <ul class="radio-list">
+                                    <li>
+                                        <input type="radio" id="istanbul" name="city" value="istanbul" />
+                                        <label for="istanbul">İstanbul</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="ankara" name="city" value="ankara" />
+                                        <label for="ankara">Ankara</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="konya" name="city" value="konya" />
+                                        <label for="konya">Konya</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen ülke seçiniz.">
+                                <label>Meslek</label>
+                                <ul class="radio-list">
+                                    <li>
+                                        <input type="radio" id="frontend" name="job" value="frontend" />
+                                        <label for="frontend">Front-End</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="pilot" name="job" value="pilot" />
+                                        <label for="pilot">Pilot</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="backend" name="job" value="backend" />
+                                        <label for="backend">Back-End</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="supreme-validate-element" error-message="Lütfen adres doldurunuz.">
+                                <label>Adres</label>
+                                <textarea placeholder="Placeholder"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/supreme.validation.min.js"></script>
+    <script>
+        (function () {
+            $('#contact-form').supremeValidaton();
+        }());
+    </script>
+</body>
+
+</html>

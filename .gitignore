@@ -1,6 +1,7 @@
 # Dirs
 .idea/
 /dist
+/build
 
 # Files
 Thumbs.db

@@ -4,8 +4,8 @@ const MinifyPlugin = require("babel-minify-webpack-plugin");
 module.exports = {
     entry: "./src/script/script.js",
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/js/script.min.js'
+        path: path.resolve(__dirname, 'build'),
+        filename: 'supreme.validation.min.js'
     },
     module: {
         rules: [

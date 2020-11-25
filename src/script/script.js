@@ -1,6 +1,7 @@
 import { ElementValidation } from './element-validation'
 
 (function ($) {
+
     const LISTENERS = {
         CLICK: 'click',
         SUBMIT: 'submit',
@@ -100,6 +101,8 @@ import { ElementValidation } from './element-validation'
         });
 
         setChangeListenerElements(formCollection)
+
+        return this
     }
 
 })(jQuery);

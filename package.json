@@ -5,10 +5,11 @@
     "description": "jQuery form validation library.",
     "main": "dist/assets/js/script.min.js",
     "files": [
-		"dist/assets/js/script.min.js"
-	],
+        "dist/assets/js/script.min.js"
+    ],
     "scripts": {
         "build": "webpack --config prod.config.js",
+        "test": "webpack --config test.config.js",
         "dev": "webpack --mode development",
         "start": "webpack-dev-server --mode development --open",
         "create": "node webpack-config/index.js"
