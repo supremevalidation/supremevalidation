@@ -149,7 +149,14 @@
     <script src="assets/js/supreme.validation.min.js"></script>
     <script>
         (function () {
-            $('#contact-form').supremeValidaton();
+            $('#contact-form').supremeValidation({
+                onSuccess: function (response) {
+                    console.log('success response: ', response)
+                },
+                onError: function (error) {
+                    console.log('error: ', error)
+                }
+            });
         }());
     </script>
 </body>

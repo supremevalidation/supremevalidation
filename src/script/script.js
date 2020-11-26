@@ -83,7 +83,7 @@ import { ElementValidation } from './element-validation'
         })
     }
 
-    $.fn.supremeValidation = function () {
+    $.fn.supremeValidation = function (settings) {
         const form = $(this);
         const button = form.find('button[type=submit]');
         const formCollection = getAllFormElements(form);
@@ -91,18 +91,26 @@ import { ElementValidation } from './element-validation'
         button.on(LISTENERS.CLICK, function (e) {
             e.preventDefault()
             const isValid = isValidForm(formCollection);
-            console.log(isValid)
+
+            if (isValid) {
+                settings.onSuccess(isValid)
+            } else {
+                settings.onError(isValid)
+            }
         });
 
         form.on(LISTENERS.SUBMIT, function (e) {
             e.preventDefault()
             const isValid = isValidForm(formCollection);
-            console.log(isValid)
+
+            if (isValid) {
+                settings.onSuccess(isValid)
+            } else {
+                settings.onError(isValid)
+            }
         });
 
         setChangeListenerElements(formCollection)
-
-        return this
     }
 
 })(jQuery);
