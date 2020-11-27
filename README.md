@@ -1,3 +1,5 @@
+<img width="150" src="https://avatars2.githubusercontent.com/u/75118074" alt="Supreme Validation" />
+
 # Supreme Validation
 Supreme Validation is a jQuery form validation library.
 
