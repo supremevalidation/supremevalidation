@@ -15,7 +15,7 @@
     ],
     "scripts": {
         "build": "webpack --config prod.config.js",
-        "test": "webpack --config test.config.js",
+        "demo": "webpack --config demo.config.js",
         "dev": "webpack --mode development",
         "start": "webpack-dev-server --mode development --open",
         "create": "node webpack-config/index.js"

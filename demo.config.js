@@ -9,7 +9,7 @@ module.exports = {
         './src/style/style-not-library.scss'
     ],
     output: {
-        path: path.resolve(__dirname, 'test'),
+        path: path.resolve(__dirname, 'demo'),
         filename: 'assets/js/supreme.validation.min.js'
     },
     module: {
