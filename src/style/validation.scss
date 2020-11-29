@@ -1,0 +1,118 @@
+@import "variables.scss";
+
+.supreme-validate {
+    &-element {
+        &::after {
+            content: attr(error-message);
+            font-size: 11px;
+            font-weight: 300;
+            color: $redorange;
+            margin-top: 5px;
+            display: none;
+        }
+
+        &.error {
+            input:not([type="radio"]):not([type="checkbox"]) {
+                border-color: $redorange;
+                color: $redorange;
+
+                &::placeholder {
+                    color: $monalisa;
+                }
+
+                &:focus {
+                    border-color: $redorange;
+                }
+            }
+
+            .select-container {
+                &::after {
+                    border-left-color: $redorange;
+                    color: $white;
+                    background-color: $redorange;
+                }
+
+                select {
+                    border-color: $redorange;
+                    color: $redorange;
+                }
+            }
+
+            .checkbox-list li label,
+            .radio-list li label {
+                color: $redorange;
+
+                &::before {
+                    border-color: $redorange;
+                }
+            }
+
+            textarea {
+                border-color: $redorange;
+                color: $redorange;
+
+                &::placeholder {
+                    color: $monalisa;
+                }
+            }
+
+            label {
+                color: $redorange;
+            }
+
+            &::after {
+                display: block;
+            }
+        }
+
+        &.success {
+            input:not([type="radio"]):not([type="checkbox"]) {
+                border-color: $emerald;
+                color: $emerald;
+
+                &::placeholder {
+                    color: $madang;
+                }
+
+                &:focus {
+                    border-color: $emerald;
+                }
+            }
+
+            .select-container {
+                &::after {
+                    border-left-color: $emerald;
+                    color: $white;
+                    background-color: $emerald;
+                }
+
+                select {
+                    border-color: $emerald;
+                    color: $emerald;
+                }
+            }
+
+            .checkbox-list li label,
+            .radio-list li label {
+                color: $emerald;
+
+                &::before {
+                    border-color: $emerald;
+                }
+            }
+
+            textarea {
+                border-color: $emerald;
+                color: $emerald;
+
+                &::placeholder {
+                    color: $madang;
+                }
+            }
+
+            label {
+                color: $emerald;
+            }
+        }
+    }
+}

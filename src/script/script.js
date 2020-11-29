@@ -113,4 +113,13 @@ import { ElementValidation } from './element-validation'
         setChangeListenerElements(formCollection)
     }
 
+    $('#contact-form').supremeValidation({
+        onSuccess: function() {
+
+        },
+        onError: function() {
+            
+        }
+    });
+
 })(jQuery);

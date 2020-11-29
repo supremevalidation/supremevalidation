@@ -1,0 +1,19 @@
+@import "variables.scss";
+
+.supreme-validate {
+    &-element {
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    & > * {
+        font-family: $montserrat;
+    }
+
+    @import "./form/button.scss";
+    @import "./form/checkbox.scss";
+    @import "./form/input.scss";
+    @import "./form/radiobutton.scss";
+    @import "./form/select.scss";
+    @import "./form/textarea.scss";
+}
