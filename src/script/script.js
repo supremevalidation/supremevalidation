@@ -38,14 +38,16 @@ import { ElementValidation } from './element-validation'
         })
     }
 
-    const isValidForm = formCollection => {
+    const isValidForm = (formCollection, showInterface = true) => {
         const types = Object.keys(formCollection).filter(item => formCollection[item].length > 0 && item);
 
         const elements = types.map(typeItem => {
             const validateElement = ElementValidation[typeItem](formCollection[typeItem])
 
-            setErrorElement(validateElement.errorElements)
-            setSuccessElement(validateElement.successElements)
+            if (showInterface) {
+                setErrorElement(validateElement.errorElements)
+                setSuccessElement(validateElement.successElements)
+            }
 
             return validateElement
         })
@@ -57,6 +59,8 @@ import { ElementValidation } from './element-validation'
 
     const elementChangeControl = e => {
         const element = e.target;
+        const form = $(element.closest('form'));
+        const button = $(form.find('button'));
         const attribute = element.getAttribute('type');
         const hasCheckOrRadio = attribute === 'checkbox' || attribute === 'radio';
         const type = hasCheckOrRadio ? attribute : element.nodeName.toLowerCase();
@@ -64,6 +68,18 @@ import { ElementValidation } from './element-validation'
 
         setErrorElement(validateElement.errorElements)
         setSuccessElement(validateElement.successElements)
+        buttonDisabledControl(form, button)
+    }
+
+    const buttonDisabledControl = (form, button) => {
+        const formCollection = getAllFormElements(form);
+        const isValid = isValidForm(formCollection, false);
+
+        if (isValid) {
+            button.removeAttr('disabled');
+        } else {
+            button.attr('disabled', true);
+        }
     }
 
     const setChangeListenerElements = formCollection => {
@@ -113,12 +129,12 @@ import { ElementValidation } from './element-validation'
         setChangeListenerElements(formCollection)
     }
 
-    $('#contact-form').supremeValidation({
-        onSuccess: function() {
+    $('.supreme-validate').supremeValidation({
+        onSuccess: function () {
 
         },
-        onError: function() {
-            
+        onError: function () {
+
         }
     });
 
