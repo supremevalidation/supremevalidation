@@ -20,7 +20,7 @@ Supreme Validation is a jQuery form validation library.
 
 ## JS
 
-<p>Place one of the following <strong><script></strong> near the end of your pages, right before the closing <strong></body></strong> tag, to enable them. jQuery must come first,  then our JavaScript plugin.</p>
+<p>Place one of the following <strong>script</strong> near the end of your pages, right before the closing <strong>body</strong> tag, to enable them. jQuery must come first,  then our JavaScript plugin.</p>
  
 ```
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
