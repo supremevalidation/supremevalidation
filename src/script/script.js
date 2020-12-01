@@ -1,3 +1,4 @@
+import { ajax } from 'jquery';
 import { ElementValidation } from './element-validation'
 
 (function ($) {
@@ -17,6 +18,14 @@ import { ElementValidation } from './element-validation'
         TEXTAREA: 'textarea',
         VALIDATE_ELEMENT_CLASS: '.supreme-validate-element'
     }
+
+    const globalSettings = {
+        onSuccess: function () { },
+        onError: function () { },
+        buttonDisabled: false,
+        keyUpOption: false,
+        focusOutOption: false
+    };
 
     const getAllFormElements = form => ({
         [ELEMENT_TYPES.INPUT]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} input:not([type=radio]):not([type=checkbox])`).toArray(),
@@ -66,8 +75,11 @@ import { ElementValidation } from './element-validation'
         const type = hasCheckOrRadio ? attribute : element.nodeName.toLowerCase();
         const validateElement = ElementValidation[type]([element]);
 
-        setErrorElement(validateElement.errorElements)
-        setSuccessElement(validateElement.successElements)
+        if (globalSettings.keyUpOption) {
+            setErrorElement(validateElement.errorElements)
+            setSuccessElement(validateElement.successElements)
+        }
+
         buttonDisabledControl(form, button)
     }
 
@@ -75,10 +87,12 @@ import { ElementValidation } from './element-validation'
         const formCollection = getAllFormElements(form);
         const isValid = isValidForm(formCollection, false);
 
-        if (isValid) {
-            button.removeAttr('disabled');
-        } else {
-            button.attr('disabled', true);
+        if (globalSettings.buttonDisabled) {
+            if (isValid) {
+                button.removeAttr('disabled');
+            } else {
+                button.attr('disabled', true);
+            }
         }
     }
 
@@ -104,6 +118,8 @@ import { ElementValidation } from './element-validation'
         const button = form.find('button[type=submit]');
         const formCollection = getAllFormElements(form);
 
+        Object.assign(globalSettings, settings)
+
         button.on(LISTENERS.CLICK, function (e) {
             e.preventDefault()
             const isValid = isValidForm(formCollection);
@@ -126,16 +142,20 @@ import { ElementValidation } from './element-validation'
             }
         });
 
-        setChangeListenerElements(formCollection)
+        setChangeListenerElements(formCollection);
+
+        buttonDisabledControl(form, button);
     }
 
     $('.supreme-validate').supremeValidation({
         onSuccess: function () {
-
+            console.log('success!');
         },
         onError: function () {
-
-        }
+            console.log('error!');
+        },
+        buttonDisabled: false,
+        keyUpOption: false
     });
 
 })(jQuery);

@@ -53,7 +53,8 @@ module.exports = {
             filename: './assets/css/supreme.validation.min.css'
         }),
         new CopyPlugin([
-            { from: './src/assets/fonts', to: './assets/fonts' }
+            { from: './src/assets/fonts', to: './assets/fonts' },
+            { from: './src/assets/img', to: './assets/img' }
         ])
     ]
 }
