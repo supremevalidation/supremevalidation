@@ -7,6 +7,7 @@ import { ElementValidation } from './element-validation'
         CLICK: 'click',
         SUBMIT: 'submit',
         KEY_UP: 'keyup',
+        FOCUS_OUT: 'focusout',
         CHANGE: 'change'
     }
 
@@ -83,6 +84,23 @@ import { ElementValidation } from './element-validation'
         buttonDisabledControl(form, button)
     }
 
+    const elementFocusOutControl = e => {
+        const element = e.target;
+        const form = $(element.closest('form'));
+        const button = $(form.find('button'));
+        const attribute = element.getAttribute('type');
+        const hasCheckOrRadio = attribute === 'checkbox' || attribute === 'radio';
+        const type = hasCheckOrRadio ? attribute : element.nodeName.toLowerCase();
+        const validateElement = ElementValidation[type]([element]);
+
+        if (globalSettings.focusOutOption) {
+            setErrorElement(validateElement.errorElements)
+            setSuccessElement(validateElement.successElements)
+        }
+
+        buttonDisabledControl(form, button)
+    }
+
     const buttonDisabledControl = (form, button) => {
         const formCollection = getAllFormElements(form);
         const isValid = isValidForm(formCollection, false);
@@ -109,6 +127,10 @@ import { ElementValidation } from './element-validation'
                 const listener = hasChangeListener ? LISTENERS.CHANGE : LISTENERS.KEY_UP;
 
                 $(collectionItem).on(listener, elementChangeControl)
+                
+                if(!hasChangeListener) {
+                    $(collectionItem).on(LISTENERS.FOCUS_OUT, elementFocusOutControl)
+                }
             })
         })
     }
@@ -155,7 +177,8 @@ import { ElementValidation } from './element-validation'
             console.log('error!');
         },
         buttonDisabled: false,
-        keyUpOption: false
+        keyUpOption: false,
+        focusOutOption: true
     });
 
 })(jQuery);
