@@ -4,13 +4,14 @@ const MinifyPlugin = require("babel-minify-webpack-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: [
-        "./src/script/script.js",
-        './src/style/style-not-library.scss'
-    ],
+    entry: {
+        "supreme.validation.min": "./src/script/script.js",
+        "supreme.validation.min": "./src/style/style-demo.scss",
+        "supreme.validation.theme.min": "./src/style/form.scss"
+    },
     output: {
         path: path.resolve(__dirname, 'demo'),
-        filename: 'assets/js/supreme.validation.min.js'
+        filename: 'assets/js/[name].js'
     },
     module: {
         rules: [
@@ -50,7 +51,7 @@ module.exports = {
     plugins: [
         new MinifyPlugin(),
         new MiniCssExtractPlugin({
-            filename: './assets/css/supreme.validation.min.css'
+            filename: './assets/css/[name].css'
         }),
         new CopyPlugin([
             { from: './src/assets/fonts', to: './assets/fonts' },

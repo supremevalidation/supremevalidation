@@ -178,7 +178,7 @@ import { ElementValidation } from './element-validation'
         },
         buttonDisabled: false,
         keyUpOption: false,
-        focusOutOption: true
+        focusOutOption: false
     });
 
 })(jQuery);
