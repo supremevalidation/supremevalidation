@@ -17,9 +17,9 @@ export default function checkValidate(collection) {
         }
     })
 
-    return ({
+    return {
         valid: unCheckedElements.length === 0,
         errorElements: unCheckedElements,
         successElements: checkedElements
-    })
+    };
 }

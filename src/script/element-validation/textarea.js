@@ -7,5 +7,5 @@ export default function textareaValidate(collection) {
         valid: elements.errorElements.length === 0,
         errorElements: elements.errorElements,
         successElements: elements.successElements
-    }
+    };
 }

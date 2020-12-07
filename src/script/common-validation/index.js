@@ -1,5 +1,5 @@
 import standartValidation from './standart-validation';
 
-export const CommonValidation = ({
+export const CommonValidation = {
     standart: standartValidation
-})
+};

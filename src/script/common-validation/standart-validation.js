@@ -1,7 +1,7 @@
-import { CustomValidation } from '../custom-validation';
+import { CustomValidation } from "../custom-validation";
 
 const isElementFull = item => {
-    return item.val() === '' || item.val() === null
+    return item.val() === "" || item.val() === null
 }
 
 export default function standartValidate(collection) {
@@ -22,8 +22,8 @@ export default function standartValidate(collection) {
     });
 
     const successResponse = collection.filter((item) => {
-        const hasCustomValidation = $(item).parent().attr('custom-validation') !== undefined;
-        const customValidationName = $(item).parent().attr('custom-validation');
+        const hasCustomValidation = $(item).parent().attr("custom-validation") !== undefined;
+        const customValidationName = $(item).parent().attr("custom-validation");
 
         if (hasCustomValidation) {
             if (CustomValidation[customValidationName]($(item).val())) {
@@ -39,5 +39,5 @@ export default function standartValidate(collection) {
     return {
         errorElements: errorResponse,
         successElements: successResponse
-    }
+    };
 }

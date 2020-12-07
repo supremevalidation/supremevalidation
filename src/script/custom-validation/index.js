@@ -14,4 +14,4 @@ export const CustomValidation = {
     tc: TCID,
     phone: Phone,
     url: Url
-}
+};

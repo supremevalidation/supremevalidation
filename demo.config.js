@@ -1,7 +1,7 @@
-const path = require('path');
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const MinifyPlugin = require("babel-minify-webpack-plugin");
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -10,8 +10,8 @@ module.exports = {
         "supreme.validation.theme.min": "./src/style/form.scss"
     },
     output: {
-        path: path.resolve(__dirname, 'demo'),
-        filename: 'assets/js/[name].js'
+        path: path.resolve(__dirname, "demo"),
+        filename: "assets/js/[name].js"
     },
     module: {
         rules: [
@@ -19,9 +19,9 @@ module.exports = {
                 test: /\.js?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: "babel-loader",
                     options: {
-                        presets: ['@babel/react', '@babel/env']
+                        presets: ["@babel/react", "@babel/env"]
                     }
                 }
             },
@@ -31,7 +31,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            publicPath: '/'
+                            publicPath: "/"
                         }
                     },
                     {
@@ -42,7 +42,7 @@ module.exports = {
                         }
                     },
                     {
-                        loader: 'sass-loader'
+                        loader: "sass-loader"
                     }
                 ]
             }
@@ -51,11 +51,11 @@ module.exports = {
     plugins: [
         new MinifyPlugin(),
         new MiniCssExtractPlugin({
-            filename: './assets/css/[name].css'
+            filename: "./assets/css/[name].css"
         }),
         new CopyPlugin([
-            { from: './src/assets/fonts', to: './assets/fonts' },
-            { from: './src/assets/img', to: './assets/img' }
+            { from: "./src/assets/fonts", to: "./assets/fonts" },
+            { from: "./src/assets/img", to: "./assets/img" }
         ])
     ]
 }
