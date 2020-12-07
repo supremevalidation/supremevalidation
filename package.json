@@ -17,8 +17,7 @@
         "build": "webpack --config prod.config.js",
         "demo": "webpack --config demo.config.js",
         "dev": "webpack --mode development",
-        "start": "webpack-dev-server --mode development --open",
-        "create": "node webpack-config/index.js"
+        "start": "webpack-dev-server --mode development --open"
     },
     "keywords": [],
     "author": "Yasin Burak Kalkan",

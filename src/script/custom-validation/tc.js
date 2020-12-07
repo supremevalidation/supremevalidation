@@ -20,7 +20,7 @@ export default function tcIDValidate(value) {
         totalY2 += Number(value.substr(i, 1));
     }
 
-    var isRuleY = ((totalY1 * 7) - totalY2) % 10 == value.substr(9, 0);
+    var isRuleY = ((totalY1 * 7) - totalY2) % 10 === value.substr(9, 0);
 
     return isEleven && isRuleX && isRuleY;
 }

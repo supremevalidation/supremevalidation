@@ -1,8 +1,8 @@
 import { CustomValidation } from "../custom-validation";
 
 const isElementFull = item => {
-    return item.val() === "" || item.val() === null
-}
+    return item.val() === "" || item.val() === null;
+};
 
 export default function standartValidate(collection) {
 
@@ -40,4 +40,4 @@ export default function standartValidate(collection) {
         errorElements: errorResponse,
         successElements: successResponse
     };
-}
+};

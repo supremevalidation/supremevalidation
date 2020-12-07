@@ -46,7 +46,8 @@ module.exports = {
             { from: "./src/assets/fonts", to: "./assets/fonts" },
             { from: "./src/assets/img", to: "./assets/img" },
             { from: "./src/temp", to: "./temp" },
-            { from: "./src/pages/index.html", to: "./" }
+            { from: "./src/pages/index.html", to: "./" },
+            { from: "./src/pages/form-1/form-1.html", to: "./" }
         ]),
         new MiniCssExtractPlugin({
             filename: "./assets/css/index.css",
