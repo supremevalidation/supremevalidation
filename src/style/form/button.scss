@@ -1,23 +1,23 @@
 @import "../variables.scss";
 
 button {
-      appearance: none;
-      padding: 0px 37px;
-      height: 55px;
-      font-family: $montserrat;
-      font-size: 14px;
-      font-weight: 300;
-      color: $white;
-      border-radius: 4px;
-      background-color: $azureradiance;
-      border: 0px;
-      outline: none;
+    appearance: none;
+    padding: 0px 37px;
+    height: 55px;
+    font-family: $montserrat;
+    font-size: 14px;
+    font-weight: 300;
+    color: $white;
+    border-radius: 4px;
+    background-color: $azureradiance;
+    border: 0px;
+    outline: none;
 
-      &:focus {
-            outline: none;
-      }
+    &:focus {
+        outline: none;
+    }
 
-      &[disabled] {
-            opacity: 0.2;
-      }
+    &[disabled] {
+        opacity: 0.2;
+    }
 }
