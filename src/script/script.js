@@ -8,7 +8,7 @@ import { ElementValidation } from "./element-validation";
         KEY_UP: "keyup",
         FOCUS_OUT: "focusout",
         CHANGE: "change"
-    }
+    };
 
     const ELEMENT_TYPES = {
         INPUT: "input",
@@ -17,7 +17,7 @@ import { ElementValidation } from "./element-validation";
         RADIO: "radio",
         TEXTAREA: "textarea",
         VALIDATE_ELEMENT_CLASS: ".supreme-validate-element"
-    }
+    };
 
     const globalSettings = {
         onSuccess: function () { },
@@ -33,24 +33,24 @@ import { ElementValidation } from "./element-validation";
         [ELEMENT_TYPES.CHECKBOX]: form.find(".checkbox-list input").toArray(),
         [ELEMENT_TYPES.RADIO]: form.find(".radio-list input").toArray(),
         [ELEMENT_TYPES.TEXTAREA]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} textarea`).toArray()
-    })
+    });
 
     const setErrorElement = (formCollection) => {
         formCollection.forEach((item) => {
             $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass("success").addClass("error");
         })
-    }
+    };
 
     const setSuccessElement = (formCollection) => {
         formCollection.forEach((item) => {
             $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass("error").addClass("success");
         })
-    }
+    };
 
     const isValidForm = (formCollection, showInterface = true) => {
-        const types = Object.keys(formCollection).filter(item => formCollection[item].length > 0 && item);
+        const types = Object.keys(formCollection).filter((item) => formCollection[item].length > 0 && item);
 
-        const elements = types.map(typeItem => {
+        const elements = types.map((typeItem) => {
             const validateElement = ElementValidation[typeItem](formCollection[typeItem]);
 
             if (showInterface) {
@@ -61,10 +61,10 @@ import { ElementValidation } from "./element-validation";
             return validateElement;
         })
 
-        const isValid = elements.filter(item => !item.valid && item).length === 0;
+        const isValid = elements.filter((item) => !item.valid && item).length === 0;
 
         return isValid;
-    }
+    };
 
     const elementChangeControl = e => {
         const element = e.target;
@@ -81,7 +81,7 @@ import { ElementValidation } from "./element-validation";
         }
 
         buttonDisabledControl(form, button);
-    }
+    };
 
     const elementFocusOutControl = e => {
         const element = e.target;
@@ -98,7 +98,7 @@ import { ElementValidation } from "./element-validation";
         }
 
         buttonDisabledControl(form, button);
-    }
+    };
 
     const buttonDisabledControl = (form, button) => {
         const formCollection = getAllFormElements(form);
@@ -111,12 +111,12 @@ import { ElementValidation } from "./element-validation";
                 button.attr("disabled", true);
             }
         }
-    }
+    };
 
     const setChangeListenerElements = (formCollection) => {
         const types = Object.keys(formCollection).filter((item) => formCollection[item].length > 0 && item);
 
-        types.forEach(typeItem => {
+        types.forEach((typeItem) => {
             const collection = formCollection[typeItem];
 
             collection.forEach((collectionItem) => {
@@ -126,29 +126,30 @@ import { ElementValidation } from "./element-validation";
                 const listener = hasChangeListener ? LISTENERS.CHANGE : LISTENERS.KEY_UP;
 
                 $(collectionItem).on(listener, elementChangeControl);
-                
-                if(!hasChangeListener) {
+
+                if (!hasChangeListener) {
                     $(collectionItem).on(LISTENERS.FOCUS_OUT, elementFocusOutControl);
                 }
             })
         })
-    }
+    };
 
     $.fn.supremeValidation = function (settings) {
         const form = $(this);
         const button = form.find("button[type=submit]");
         const formCollection = getAllFormElements(form);
 
-        Object.assign(globalSettings, settings)
+        Object.assign(globalSettings, settings);
 
         button.on(LISTENERS.CLICK, function (e) {
-            e.preventDefault()
+            e.preventDefault();
+
             const isValid = isValidForm(formCollection);
 
             if (isValid) {
-                settings.onSuccess(isValid)
+                settings.onSuccess(isValid);
             } else {
-                settings.onError(isValid)
+                settings.onError(isValid);
             }
         });
 
@@ -157,24 +158,20 @@ import { ElementValidation } from "./element-validation";
             const isValid = isValidForm(formCollection);
 
             if (isValid) {
-                settings.onSuccess(isValid)
+                settings.onSuccess(isValid);
             } else {
-                settings.onError(isValid)
+                settings.onError(isValid);
             }
         });
 
         setChangeListenerElements(formCollection);
 
         buttonDisabledControl(form, button);
-    }
+    };
 
     $(".supreme-validate").supremeValidation({
-        onSuccess: function () {
-            console.log("success!");
-        },
-        onError: function () {
-            console.log("error!");
-        },
+        onSuccess: function () { },
+        onError: function () { },
         buttonDisabled: false,
         keyUpOption: false,
         focusOutOption: false

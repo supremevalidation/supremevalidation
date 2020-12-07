@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { pages } = require("./webpack-config/file/html");
@@ -18,22 +17,6 @@ module.exports = {
     },
     devServer: {
         contentBase: "./dist"
-    },
-    optimization: {
-        minimizer: [new UglifyJsPlugin({
-            uglifyOptions: {
-                compress: {
-                    sequences: true,
-                    dead_code: true,
-                    conditionals: true,
-                    booleans: true,
-                    unused: true,
-                    if_return: true,
-                    join_vars: true,
-                    drop_console: true
-                }
-            }
-        })],
     },
     plugins: [
         new CleanWebpackPlugin(),

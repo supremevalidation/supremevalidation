@@ -10,4 +10,4 @@ export const ElementValidation = {
     radio: radio,
     select: select,
     textarea: textarea
-}
+};

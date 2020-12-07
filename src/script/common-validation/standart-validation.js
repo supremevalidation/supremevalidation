@@ -1,12 +1,12 @@
 import { CustomValidation } from "../custom-validation";
 
-const isElementFull = item => {
+const isElementFull = (item) => {
     return item.val() === "" || item.val() === null;
 };
 
 export default function standartValidate(collection) {
 
-    const errorResponse = collection.filter(item => {
+    const errorResponse = collection.filter((item) => {
         const hasCustomValidation = $(item).parent().attr("custom-validation") !== undefined;
         const customValidationName = $(item).parent().attr("custom-validation");
 
@@ -40,4 +40,4 @@ export default function standartValidate(collection) {
         errorElements: errorResponse,
         successElements: successResponse
     };
-};
+}
