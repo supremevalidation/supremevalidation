@@ -1,23 +1,23 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
 
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { pages } = require('./webpack-config/file/html');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { pages } = require("./webpack-config/file/html");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
     entry: [
-        './src/script/script.js',
-        './src/style/style.scss'
+        "./src/script/script.js",
+        "./src/style/style.scss"
     ],
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/js/script.min.js'
+        path: path.resolve(__dirname, "dist"),
+        filename: "assets/js/script.min.js"
     },
     devServer: {
-        contentBase: './dist'
+        contentBase: "./dist"
     },
     optimization: {
         minimizer: [new UglifyJsPlugin({
@@ -38,18 +38,18 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
         }),
         new CopyPlugin([
-            { from: './src/assets/fonts', to: './assets/fonts' },
-            { from: './src/assets/img', to: './assets/img' },
-            { from: './src/temp', to: './temp' },
-            { from: './src/pages/index.html', to: './' }
+            { from: "./src/assets/fonts", to: "./assets/fonts" },
+            { from: "./src/assets/img", to: "./assets/img" },
+            { from: "./src/temp", to: "./temp" },
+            { from: "./src/pages/index.html", to: "./" }
         ]),
         new MiniCssExtractPlugin({
-            filename: './assets/css/index.css',
+            filename: "./assets/css/index.css",
             allChunks: true
         }),
         ...pages
@@ -59,7 +59,7 @@ module.exports = {
             {
                 test: /\.(svg|png|jpg|jpeg|gif)$/,
                 use: {
-                    loader: 'file-loader',
+                    loader: "file-loader",
                     options: {
                         name: "[name].[ext]",
                         outputPath: (url, resourcePath, context) => {
@@ -69,10 +69,8 @@ module.exports = {
                                 return `assets/img/${url}`;
                             }
 
-                            const noSrcPath = relativePath.replace('src', '')
-                            const cleanPath = noSrcPath.replace(noSrcPath.charAt(0), '')
-
-                            console.log('path: ', cleanPath)
+                            const noSrcPath = relativePath.replace("src", "");
+                            const cleanPath = noSrcPath.replace(noSrcPath.charAt(0), "");
 
                             return `${cleanPath}`;
                         }
@@ -81,7 +79,7 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                loader: 'file-loader',
+                loader: "file-loader",
                 options: {
                     name: "assets/fonts/[name]/[name].[ext]"
                 }
@@ -89,7 +87,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
+                loader: "babel-loader",
             },
             {
                 test: /\.scss$/,
@@ -97,7 +95,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            publicPath: '/'
+                            publicPath: "/"
                         }
                     },
                     {
@@ -108,7 +106,7 @@ module.exports = {
                         }
                     },
                     {
-                        loader: 'sass-loader'
+                        loader: "sass-loader"
                     }
                 ]
             }

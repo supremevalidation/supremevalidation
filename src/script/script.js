@@ -27,7 +27,7 @@ import { ElementValidation } from "./element-validation";
         focusOutOption: false
     };
 
-    const getAllFormElements = form => ({
+    const getAllFormElements = (form) => ({
         [ELEMENT_TYPES.INPUT]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} input:not([type=radio]):not([type=checkbox])`).toArray(),
         [ELEMENT_TYPES.SELECT]: form.find(".select-container select").toArray(),
         [ELEMENT_TYPES.CHECKBOX]: form.find(".checkbox-list input").toArray(),
@@ -35,15 +35,15 @@ import { ElementValidation } from "./element-validation";
         [ELEMENT_TYPES.TEXTAREA]: form.find(`${ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS} textarea`).toArray()
     })
 
-    const setErrorElement = formCollection => {
-        formCollection.forEach(item => {
-            $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass("success").addClass("error")
+    const setErrorElement = (formCollection) => {
+        formCollection.forEach((item) => {
+            $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass("success").addClass("error");
         })
     }
 
-    const setSuccessElement = formCollection => {
-        formCollection.forEach(item => {
-            $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass("error").addClass("success")
+    const setSuccessElement = (formCollection) => {
+        formCollection.forEach((item) => {
+            $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass("error").addClass("success");
         })
     }
 
@@ -51,19 +51,19 @@ import { ElementValidation } from "./element-validation";
         const types = Object.keys(formCollection).filter(item => formCollection[item].length > 0 && item);
 
         const elements = types.map(typeItem => {
-            const validateElement = ElementValidation[typeItem](formCollection[typeItem])
+            const validateElement = ElementValidation[typeItem](formCollection[typeItem]);
 
             if (showInterface) {
-                setErrorElement(validateElement.errorElements)
-                setSuccessElement(validateElement.successElements)
+                setErrorElement(validateElement.errorElements);
+                setSuccessElement(validateElement.successElements);
             }
 
-            return validateElement
+            return validateElement;
         })
 
-        const isValid = elements.filter(item => !item.valid && item).length === 0
+        const isValid = elements.filter(item => !item.valid && item).length === 0;
 
-        return isValid
+        return isValid;
     }
 
     const elementChangeControl = e => {
@@ -76,11 +76,11 @@ import { ElementValidation } from "./element-validation";
         const validateElement = ElementValidation[type]([element]);
 
         if (globalSettings.keyUpOption) {
-            setErrorElement(validateElement.errorElements)
-            setSuccessElement(validateElement.successElements)
+            setErrorElement(validateElement.errorElements);
+            setSuccessElement(validateElement.successElements);
         }
 
-        buttonDisabledControl(form, button)
+        buttonDisabledControl(form, button);
     }
 
     const elementFocusOutControl = e => {
@@ -93,11 +93,11 @@ import { ElementValidation } from "./element-validation";
         const validateElement = ElementValidation[type]([element]);
 
         if (globalSettings.focusOutOption) {
-            setErrorElement(validateElement.errorElements)
-            setSuccessElement(validateElement.successElements)
+            setErrorElement(validateElement.errorElements);
+            setSuccessElement(validateElement.successElements);
         }
 
-        buttonDisabledControl(form, button)
+        buttonDisabledControl(form, button);
     }
 
     const buttonDisabledControl = (form, button) => {
@@ -113,22 +113,22 @@ import { ElementValidation } from "./element-validation";
         }
     }
 
-    const setChangeListenerElements = formCollection => {
-        const types = Object.keys(formCollection).filter(item => formCollection[item].length > 0 && item);
+    const setChangeListenerElements = (formCollection) => {
+        const types = Object.keys(formCollection).filter((item) => formCollection[item].length > 0 && item);
 
         types.forEach(typeItem => {
             const collection = formCollection[typeItem];
 
-            collection.forEach(collectionItem => {
+            collection.forEach((collectionItem) => {
                 const attribute = collectionItem.getAttribute("type");
                 const type = collectionItem.nodeName;
                 const hasChangeListener = type === "SELECT" || attribute === "checkbox" || attribute === "radio";
                 const listener = hasChangeListener ? LISTENERS.CHANGE : LISTENERS.KEY_UP;
 
-                $(collectionItem).on(listener, elementChangeControl)
+                $(collectionItem).on(listener, elementChangeControl);
                 
                 if(!hasChangeListener) {
-                    $(collectionItem).on(LISTENERS.FOCUS_OUT, elementFocusOutControl)
+                    $(collectionItem).on(LISTENERS.FOCUS_OUT, elementFocusOutControl);
                 }
             })
         })
