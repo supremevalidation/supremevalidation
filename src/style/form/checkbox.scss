@@ -1,64 +1,64 @@
 @import "../variables.scss";
 
 .checkbox-list {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
 
-    li {
-        list-style-type: none;
+      li {
+            list-style-type: none;
 
-        &:not(:last-child) {
-            margin-right: 15px;
-        }
-
-        input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
-        }
-
-        label {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            margin: 0;
-            font-family: $montserrat;
-            font-size: 12px;
-            font-weight: 300;
-            color: $gray;
-            transition-duration: 0.5s;
-            transition-property: color;
-
-            &::before {
-                content: $icon-check-solid;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-family: $icomoon-font-family;
-                font-size: 7px;
-                color: transparent;
-                width: 15px;
-                height: 15px;
-                border-radius: 4px;
-                border: solid 1px $gray;
-                background-color: $white;
-                margin-right: 10px;
-                transition-duration: 0.5s;
-                transition-property: border-color, color;
+            &:not(:last-child) {
+                  margin-right: 15px;
             }
-        }
 
-        input:checked + label {
-            color: $emerald;
-        }
+            input {
+                  position: absolute;
+                  opacity: 0;
+                  cursor: pointer;
+                  height: 0;
+                  width: 0;
+            }
 
-        input:checked + label::before {
-            border-color: $emerald;
-            color: $emerald;
-        }
-    }
+            label {
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  margin: 0;
+                  font-family: $montserrat;
+                  font-size: 12px;
+                  font-weight: 300;
+                  color: $gray;
+                  transition-duration: 0.5s;
+                  transition-property: color;
+
+                  &::before {
+                        content: $icon-check-solid;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-family: $icomoon-font-family;
+                        font-size: 7px;
+                        color: transparent;
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 4px;
+                        border: solid 1px $gray;
+                        background-color: $white;
+                        margin-right: 10px;
+                        transition-duration: 0.5s;
+                        transition-property: border-color, color;
+                  }
+            }
+
+            input:checked + label {
+                  color: $emerald;
+            }
+
+            input:checked + label::before {
+                  border-color: $emerald;
+                  color: $emerald;
+            }
+      }
 }
