@@ -4,7 +4,7 @@ const config = require("../config");
 const helper = require("../helper");
 
 module.exports = {
-    pages: glob.sync(`${config.path.pages}/**/*.html`, { ignore: `${config.path.pages}/index.html` }).map(page => (
+    pages: glob.sync(`${config.path.pages}/**/*.html`, { ignore: `${config.path.pages}/index.html` }).map((page) => (
         new HtmlWebpackPlugin({
             filename: helper.deleteFilePathSingle(page),
             template: page
@@ -16,4 +16,4 @@ module.exports = {
             template: component
         })
     ))
-}
+};

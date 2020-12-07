@@ -25,43 +25,27 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-caret-down-solid {
-  &:before {
-    content: $icon-caret-down-solid;
-  }
+.icon-caret-down-solid::before {
+  content: $icon-caret-down-solid;
 }
-.icon-caret-left-solid {
-  &:before {
-    content: $icon-caret-left-solid;
-  }
+.icon-caret-left-solid::before {
+  content: $icon-caret-left-solid;
 }
-.icon-caret-right-solid {
-  &:before {
-    content: $icon-caret-right-solid;
-  }
+.icon-caret-right-solid::before {
+  content: $icon-caret-right-solid;
 }
-.icon-caret-up-solid {
-  &:before {
-    content: $icon-caret-up-solid;
-  }
+.icon-caret-up-solid::before {
+  content: $icon-caret-up-solid;
 }
-.icon-check-solid {
-  &:before {
-    content: $icon-check-solid;
-  }
+.icon-check-solid::before {
+  content: $icon-check-solid;
 }
-.icon-circle-solid {
-  &:before {
-    content: $icon-circle-solid;
-  }
+.icon-circle-solid::before {
+  content: $icon-circle-solid;
 }
-.icon-info-solid {
-  &:before {
-    content: $icon-info-solid;
-  }
+.icon-info-solid::before {
+  content: $icon-info-solid;
 }
-.icon-times-solid {
-  &:before {
-    content: $icon-times-solid;
-  }
+.icon-times-solid::before {
+  content: $icon-times-solid;
 }

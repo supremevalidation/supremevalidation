@@ -61,4 +61,4 @@ module.exports = {
             { from: "./src/assets/img", to: "./assets/img" }
         ])
     ]
-}
+};

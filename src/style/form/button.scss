@@ -2,7 +2,7 @@
 
 button {
   appearance: none;
-  padding: 0px 37px;
+  padding: 0 37px;
   height: 55px;
   font-family: $montserrat;
   font-size: 14px;
@@ -10,7 +10,7 @@ button {
   color: $white;
   border-radius: 4px;
   background-color: $azureradiance;
-  border: 0px;
+  border: 0;
   outline: none;
 
   &:focus {

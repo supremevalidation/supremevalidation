@@ -38,13 +38,13 @@ import { ElementValidation } from "./element-validation";
     const setErrorElement = (formCollection) => {
         formCollection.forEach((item) => {
             $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass("success").addClass("error");
-        })
+        });
     };
 
     const setSuccessElement = (formCollection) => {
         formCollection.forEach((item) => {
             $(item).closest(ELEMENT_TYPES.VALIDATE_ELEMENT_CLASS).removeClass("error").addClass("success");
-        })
+        });
     };
 
     const isValidForm = (formCollection, showInterface = true) => {
@@ -66,7 +66,7 @@ import { ElementValidation } from "./element-validation";
         return isValid;
     };
 
-    const elementChangeControl = e => {
+    const elementChangeControl = (e) => {
         const element = e.target;
         const form = $(element.closest("form"));
         const button = $(form.find("button"));
@@ -83,7 +83,7 @@ import { ElementValidation } from "./element-validation";
         buttonDisabledControl(form, button);
     };
 
-    const elementFocusOutControl = e => {
+    const elementFocusOutControl = (e) => {
         const element = e.target;
         const form = $(element.closest("form"));
         const button = $(form.find("button"));
@@ -165,7 +165,6 @@ import { ElementValidation } from "./element-validation";
         });
 
         setChangeListenerElements(formCollection);
-
         buttonDisabledControl(form, button);
     };
 

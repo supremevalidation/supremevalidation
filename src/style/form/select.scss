@@ -2,7 +2,7 @@
 
 .select-container {
   position: relative;
-  height: 50px;
+  height: 50;
 
   select {
     appearance: none;
@@ -11,10 +11,9 @@
     outline: none;
     border-radius: 4px;
     border: solid 1px $alto;
-    padding: 0px 20px;
-    padding-right: 70px;
+    padding: 0 20;
+    padding-right: 70;
     cursor: pointer;
-
     font-family: $montserrat;
     font-size: 14px;
     font-weight: 300;
@@ -29,7 +28,7 @@
     justify-content: center;
     right: 1px;
     top: 1px;
-    width: 50px;
+    width: 50;
     height: calc(100% - 2px);
     border-left: solid 1px $alto;
     background-color: $wildsand;

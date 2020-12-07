@@ -8,7 +8,7 @@ export default function tcIDValidate(value) {
         totalX += Number(value.substr(i, 1));
     }
 
-    var isRuleX = totalX % 10 == value.substr(10, 1);
+    var isRuleX = totalX % 10 === value.substr(10, 1);
     var totalY1 = 0;
     var totalY2 = 0;
 
