@@ -1,7 +1,7 @@
-import { CommonValidation } from '../common-validation'
+import { CommonValidation } from "../common-validation";
 
 export default function textareaValidate(collection) {
-    const elements = CommonValidation.standart(collection)
+    const elements = CommonValidation.standart(collection);
 
     return {
         valid: elements.errorElements.length === 0,

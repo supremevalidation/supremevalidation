@@ -1,10 +1,10 @@
 export default function radioValidate(collection) {
-    const checkedElements = collection.filter(item => $(item).prop('checked') && item)
-    const unCheckedElements = collection.filter(item => !$(item).prop('checked') && item)
+    const checkedElements = collection.filter((item) => $(item).prop("checked") && item);
+    const unCheckedElements = collection.filter((item) => !$(item).prop("checked") && item);
 
-    return {
+    return ({
         valid: checkedElements.length > 0,
         errorElements: unCheckedElements,
         successElements: checkedElements
-    }
+    })
 }
