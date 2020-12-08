@@ -11,7 +11,11 @@ export default function standartValidate(collection) {
         const customValidationName = $(item).parent().attr("custom-validation");
 
         if (hasCustomValidation) {
-            if (!CustomValidation[customValidationName]($(item).val())) {
+            const value = $(item).val();
+            const validationFunc = CustomValidation[customValidationName];
+            const control = validationFunc(value);
+
+            if (!control) {
                 return item;
             }
         } else {
@@ -22,7 +26,7 @@ export default function standartValidate(collection) {
     });
 
     const successResponse = collection.filter((item) => {
-        const hasCustomValidation = $(item).parent().attr("custom-validation") !== undefined;
+        const hasCustomValidation = item.parentNode.hasAttribute("custom-validation");
         const customValidationName = $(item).parent().attr("custom-validation");
 
         if (hasCustomValidation) {
@@ -30,9 +34,8 @@ export default function standartValidate(collection) {
                 return item;
             }
         } else {
-            if (!isElementFull($(item))) {
+            if (!isElementFull($(item)))
                 return item;
-            }
         }
     });
 

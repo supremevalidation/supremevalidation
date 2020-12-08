@@ -51,7 +51,8 @@ import { ElementValidation } from "./element-validation";
         const types = Object.keys(formCollection).filter((item) => formCollection[item].length > 0 && item);
 
         const elements = types.map((typeItem) => {
-            const validateElement = ElementValidation[typeItem](formCollection[typeItem]);
+            const realItem = formCollection[typeItem];
+            const validateElement = ElementValidation[typeItem](realItem);
 
             if (showInterface) {
                 setErrorElement(validateElement.errorElements);
@@ -59,11 +60,24 @@ import { ElementValidation } from "./element-validation";
             }
 
             return validateElement;
-        })
+        });
 
         const isValid = elements.filter((item) => !item.valid && item).length === 0;
 
         return isValid;
+    };
+
+    const buttonDisabledControl = (form, button) => {
+        const formCollection = getAllFormElements(form);
+        const isValid = isValidForm(formCollection, false);
+
+        if (globalSettings.buttonDisabled) {
+            if (isValid) {
+                button.removeAttr("disabled");
+            } else {
+                button.attr("disabled", true);
+            }
+        }
     };
 
     const elementChangeControl = (e) => {
@@ -100,21 +114,12 @@ import { ElementValidation } from "./element-validation";
         buttonDisabledControl(form, button);
     };
 
-    const buttonDisabledControl = (form, button) => {
-        const formCollection = getAllFormElements(form);
-        const isValid = isValidForm(formCollection, false);
-
-        if (globalSettings.buttonDisabled) {
-            if (isValid) {
-                button.removeAttr("disabled");
-            } else {
-                button.attr("disabled", true);
-            }
-        }
-    };
-
     const setChangeListenerElements = (formCollection) => {
-        const types = Object.keys(formCollection).filter((item) => formCollection[item].length > 0 && item);
+        const types = Object.keys(formCollection).filter((item) => {
+            const realItem = formCollection[item];
+
+            return realItem.length > 0 && item;
+        });
 
         types.forEach((typeItem) => {
             const collection = formCollection[typeItem];
@@ -172,7 +177,7 @@ import { ElementValidation } from "./element-validation";
         onSuccess: function () { },
         onError: function () { },
         buttonDisabled: false,
-        keyUpOption: false,
+        keyUpOption: true,
         focusOutOption: false
     });
 

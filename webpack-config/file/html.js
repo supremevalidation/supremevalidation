@@ -10,7 +10,7 @@ module.exports = {
             template: page
         })
     )),
-    components: glob.sync(`${config.path.components}/**/*.html`).map(component => (
+    components: glob.sync(`${config.path.components}/**/*.html`).map((component) => (
         new HtmlWebpackPlugin({
             filename: "component-" + helper.deleteFilePathSingle(component),
             template: component

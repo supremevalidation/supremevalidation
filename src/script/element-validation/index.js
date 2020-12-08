@@ -1,13 +1,13 @@
-import check from "./check";
-import input from "./input";
-import radio from "./radio";
-import select from "./select";
-import textarea from "./textarea";
+import checkControl from "./check";
+import inputControl from "./input";
+import radioControl from "./radio";
+import selectControl from "./select";
+import textareaControl from "./textarea";
 
 export const ElementValidation = {
-    checkbox: check,
-    input: input,
-    radio: radio,
-    select: select,
-    textarea: textarea
+    checkbox: checkControl,
+    input: inputControl,
+    radio: radioControl,
+    select: selectControl,
+    textarea: textareaControl
 };
