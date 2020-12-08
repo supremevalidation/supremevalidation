@@ -8,6 +8,7 @@ Supreme Validation is a jQuery form validation library.
 - Install with npm: `npm install supreme-validation`
 
 # Status
+[![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/yasgo/supremevalidation)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/154c5ce30c2c4a9e889ec780bdfe3860)](https://app.codacy.com/gh/supremevalidation/supremevalidation?utm_source=github.com&utm_medium=referral&utm_content=supremevalidation/supremevalidation&utm_campaign=Badge_Grade)
 [![npm version](https://img.shields.io/npm/v/supreme-validation)](https://www.npmjs.com/package/supreme-validation)
 
