@@ -1,12 +1,14 @@
 {
     "name": "supreme-validation",
     "title": "Supreme Validation",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "description": "jQuery form validation library.",
     "main": "test/assets/js/supreme.validation.min.js",
     "files": [
+        "test/assets/img/favicon.ico",
         "test/assets/js/supreme.validation.min.js",
         "test/assets/css/supreme.validation.min.css",
+        "test/assets/css/supreme.validation.theme.min.css",
         "test/assets/fonts/SupremeValidationIconFont.eot",
         "test/assets/fonts/SupremeValidationIconFont.svg",
         "test/assets/fonts/SupremeValidationIconFont.ttf",
@@ -14,7 +16,6 @@
         "test/index.html"
     ],
     "scripts": {
-        "build": "webpack --config prod.config.js",
         "demo": "webpack --config demo.config.js",
         "dev": "webpack --mode development",
         "start": "webpack-dev-server --mode development --open"

@@ -7,14 +7,12 @@ const MINIFY_NAME = "supreme.validation.min";
 const FORM_MINIFY_NAME = "supreme.validation.theme.min";
 
 module.exports = {
-    entry: {
-        [MINIFY_NAME]: "./src/script/script.js",
-        [MINIFY_NAME]: "./src/style/style-demo.scss",
-        [FORM_MINIFY_NAME]: "./src/style/form.scss"
-    },
+    entry: [
+        "./src/script/script.js"
+    ],
     output: {
         path: path.resolve(__dirname, "demo"),
-        filename: "assets/js/[name].js"
+        filename: `assets/js/${MINIFY_NAME}.js`
     },
     module: {
         rules: [

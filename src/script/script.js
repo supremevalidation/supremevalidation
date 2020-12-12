@@ -173,12 +173,4 @@ import { ElementValidation } from "./element-validation";
         buttonDisabledControl(form, button);
     };
 
-    $(".supreme-validate").supremeValidation({
-        onSuccess: function () { },
-        onError: function () { },
-        buttonDisabled: false,
-        keyUpOption: true,
-        focusOutOption: false
-    });
-
 })(jQuery);
