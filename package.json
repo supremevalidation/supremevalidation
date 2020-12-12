@@ -1,19 +1,19 @@
 {
     "name": "supreme-validation",
     "title": "Supreme Validation",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "description": "jQuery form validation library.",
-    "main": "test/assets/js/supreme.validation.min.js",
+    "main": "demo/assets/js/supreme.validation.min.js",
     "files": [
-        "test/assets/img/favicon.ico",
-        "test/assets/js/supreme.validation.min.js",
-        "test/assets/css/supreme.validation.min.css",
-        "test/assets/css/supreme.validation.theme.min.css",
-        "test/assets/fonts/SupremeValidationIconFont.eot",
-        "test/assets/fonts/SupremeValidationIconFont.svg",
-        "test/assets/fonts/SupremeValidationIconFont.ttf",
-        "test/assets/fonts/SupremeValidationIconFont.woff",
-        "test/index.html"
+        "demo/assets/img/favicon.ico",
+        "demo/assets/js/supreme.validation.min.js",
+        "demo/assets/css/supreme.validation.min.css",
+        "demo/assets/css/supreme.validation.theme.min.css",
+        "demo/assets/fonts/SupremeValidationIconFont.eot",
+        "demo/assets/fonts/SupremeValidationIconFont.svg",
+        "demo/assets/fonts/SupremeValidationIconFont.ttf",
+        "demo/assets/fonts/SupremeValidationIconFont.woff",
+        "demo/index.html"
     ],
     "scripts": {
         "demo": "webpack --config demo.config.js",
