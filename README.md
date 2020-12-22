@@ -3,6 +3,9 @@
 # Supreme Validation
 Supreme Validation is a jQuery form validation library.
 
+# Demo
+<a href="https://supremevalidation.github.io/demo/">Bootstrap UI Demo</a>
+
 # Quick Start
 - Clone the repo: `git clone https://github.com/yasgo/supreme-validation.git`
 - Install with npm: `npm install supreme-validation`
