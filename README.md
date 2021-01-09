@@ -45,12 +45,7 @@ Supreme Validation is a jQuery form validation library.
 
 ```
 $('#contact-form').supremeValidation({
-    onSuccess: function (response) {
-        console.log('success response: ', response)
-    },
-    onError: function (error) {
-        console.log('error: ', error)
-    }
+  onComplete: function (response, form) { },
 });
 ```
 

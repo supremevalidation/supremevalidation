@@ -1,7 +1,7 @@
 {
   "name": "supreme-validation",
   "title": "Supreme Validation",
-  "version": "1.10.3",
+  "version": "1.10.5",
   "description": "jQuery form validation library.",
   "main": "demo/assets/js/supreme.validation.min.js",
   "files": [
