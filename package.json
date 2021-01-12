@@ -1,35 +1,13 @@
 {
-  "name": "supreme-validation",
-  "title": "Supreme Validation",
-  "version": "1.10.5",
-  "description": "jQuery form validation library.",
-  "main": "demo/assets/js/supreme.validation.min.js",
-  "files": [
-    "demo/assets/img/favicon.ico",
-    "demo/assets/js/supreme.validation.min.js",
-    "demo/assets/css/supreme.validation.min.css",
-    "demo/assets/css/supreme.validation.theme.min.css",
-    "demo/assets/fonts/SupremeValidationIconFont.eot",
-    "demo/assets/fonts/SupremeValidationIconFont.svg",
-    "demo/assets/fonts/SupremeValidationIconFont.ttf",
-    "demo/assets/fonts/SupremeValidationIconFont.woff",
-    "demo/index.html",
-    "dist/supreme.validation.min.js",
-    "dist/supreme.validation.min.css",
-    "dist/supreme.validation.theme.min.css"
-  ],
+  "name": "ms-validation",
+  "version": "1.0.0",
   "scripts": {
     "demo": "webpack --config demo.config.js",
     "dev": "webpack --mode development",
     "start": "webpack-dev-server --mode development --open"
   },
   "keywords": [],
-  "author": "Yasin Burak Kalkan",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yasgo/supreme-validation/issues"
-  },
-  "homepage": "https://supremevalidation.github.io/",
+  "author": "Medyasoft",
   "devDependencies": {
     "@babel/core": "^7.12.7",
     "@babel/preset-env": "^7.12.7",
