@@ -1,7 +1,7 @@
 import { CustomValidation } from "../custom-validation";
 
 const isElementFull = (item) => {
-  const minChar = item.closest(".supreme-validate-element").attr("min");
+  const minChar = item.closest(".ms-validate-element").attr("min");
 
   return item.val() === "" || item.val() === null || minChar && item.val().length < minChar;
 };

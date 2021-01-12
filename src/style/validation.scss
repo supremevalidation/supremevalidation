@@ -1,6 +1,6 @@
 @import "variables.scss";
 
-.supreme-validate {
+.ms-validate {
   &-element {
     &::after {
       content: attr(error-message);

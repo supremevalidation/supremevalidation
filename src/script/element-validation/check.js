@@ -4,7 +4,7 @@ export default function checkValidate(collection) {
     const checkedElements = [];
 
     collection.forEach((item) => {
-        const minCheck = $(item).closest(".supreme-validate-element").attr("min-check");
+        const minCheck = $(item).closest(".ms-validate-element").attr("min-check");
         const container = $(item).closest(".checkbox-list");
         const subCollection = $(container).find("input").toArray();
         const selectedSubCollection = subCollection.filter((item) => item.checked && item);

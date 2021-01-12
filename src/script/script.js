@@ -16,7 +16,7 @@ import { ElementValidation } from "./element-validation";
     CHECKBOX: "checkbox",
     RADIO: "radio",
     TEXTAREA: "textarea",
-    VALIDATE_ELEMENT_CLASS: ".supreme-validate-element"
+    VALIDATE_ELEMENT_CLASS: ".ms-validate-element"
   };
 
   const globalSettings = {
@@ -139,7 +139,7 @@ import { ElementValidation } from "./element-validation";
     })
   };
 
-  $.fn.supremeValidation = function (settings) {
+  $.fn.msValidation = function (settings) {
     const form = $(this);
     const button = form.find("button[type=submit]");
     const formCollection = getAllFormElements(form);

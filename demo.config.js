@@ -3,12 +3,13 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const MinifyPlugin = require("babel-minify-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
-const MINIFY_NAME = "supreme.validation.min";
-const FORM_MINIFY_NAME = "supreme.validation.theme.min";
+const MINIFY_NAME = "ms.validation.min";
+const FORM_MINIFY_NAME = "ms.validation.theme.min";
 
 module.exports = {
     entry: [
-        "./src/script/script.js"
+        "./src/script/script.js",
+        "./src/style/style-demo.scss"
     ],
     output: {
         path: path.resolve(__dirname, "demo"),
