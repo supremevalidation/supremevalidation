@@ -1,5 +1,3 @@
-<img width="150" src="https://avatars2.githubusercontent.com/u/75118074" alt="Supreme Validation" />
-
 # Medyasoft Validation
 Medyasoft Validation is a jQuery form validation library.
 
@@ -38,7 +36,7 @@ Medyasoft Validation is a jQuery form validation library.
 # Example
 
 ```
-$('.validate-form').supremeValidation({
+$('.validate-form').msValidation({
   onComplete: function (response, form) { },
 });
 ```

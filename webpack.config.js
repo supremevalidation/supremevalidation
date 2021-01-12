@@ -30,7 +30,7 @@ module.exports = {
             { from: "./src/assets/img", to: "./assets/img" },
             { from: "./src/temp", to: "./temp" },
             { from: "./src/pages/index.html", to: "./" },
-            { from: "./src/pages/supreme-demo/supreme-demo.html", to: "./" },
+            { from: "./src/pages/ms-demo/ms-demo.html", to: "./" },
             { from: "./src/pages/bootstrap-demo/bootstrap-demo.html", to: "./" }
         ]),
         new MiniCssExtractPlugin({
